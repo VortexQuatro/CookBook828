@@ -1,6 +1,6 @@
-package br.com.letscode.cookbook.domain;
+package com.vortexquatro.cookbook.domain;
 
-import br.com.letscode.cookbook.enums.TipoMedida;
+import com.vortexquatro.cookbook.enums.TipoMedida;
 
 public class Ingrediente {
     private String nome;

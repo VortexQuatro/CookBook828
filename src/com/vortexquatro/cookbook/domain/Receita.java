@@ -1,6 +1,6 @@
-package br.com.letscode.cookbook.domain;
+package com.vortexquatro.cookbook.domain;
 
-import br.com.letscode.cookbook.enums.Categoria;
+import com.vortexquatro.cookbook.enums.Categoria;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -25,6 +25,11 @@ public class Receita {
         this.rendimento = origem.rendimento;
         this.ingredientes = new ArrayList<>(origem.ingredientes);
         this.preparo = new ArrayList<>(origem.preparo);
+    }
+
+    public Receita(){
+        this.ingredientes = new ArrayList<>();
+        this.preparo = new ArrayList<>();
     }
 
     public String getNome() {
@@ -64,7 +69,17 @@ public class Receita {
     }
 
     public void setRendimento(Rendimento rendimento) {
+
         this.rendimento = rendimento;
+    }
+
+    public void addIngrediente(List<Ingrediente> ingredientes) {
+
+        this.ingredientes = ingredientes;
+    }
+
+    public void addPreparo(List<String> preparo) {
+        this.preparo = preparo;
     }
 
     @Override

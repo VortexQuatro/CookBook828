@@ -1,6 +1,6 @@
-package br.com.letscode.cookbook.controller;
+package com.vortexquatro.cookbook.controller;
 
-import br.com.letscode.cookbook.domain.Receita;
+import com.vortexquatro.cookbook.domain.Receita;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -44,6 +44,7 @@ public class Catalogo {
     }
 
     public int getTotal() {
+
         return receitas.size();
     }
 }

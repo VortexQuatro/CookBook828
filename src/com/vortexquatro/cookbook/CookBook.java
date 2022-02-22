@@ -1,9 +1,9 @@
-package br.com.letscode.cookbook;
+package com.vortexquatro.cookbook;
 
-import br.com.letscode.cookbook.controller.Catalogo;
-import br.com.letscode.cookbook.domain.Receita;
-import br.com.letscode.cookbook.enums.Categoria;
-import br.com.letscode.cookbook.view.CatalogoView;
+import com.vortexquatro.cookbook.controller.Catalogo;
+import com.vortexquatro.cookbook.domain.Receita;
+import com.vortexquatro.cookbook.enums.Categoria;
+import com.vortexquatro.cookbook.view.CatalogoView;
 
 public class CookBook {
     public static void main(String[] args) {

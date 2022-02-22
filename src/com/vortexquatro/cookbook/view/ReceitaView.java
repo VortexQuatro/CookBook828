@@ -1,7 +1,7 @@
-package br.com.letscode.cookbook.view;
+package com.vortexquatro.cookbook.view;
 
-import br.com.letscode.cookbook.domain.Ingrediente;
-import br.com.letscode.cookbook.domain.Receita;
+import com.vortexquatro.cookbook.domain.Ingrediente;
+import com.vortexquatro.cookbook.domain.Receita;
 
 import java.io.PrintStream;
 
@@ -9,6 +9,7 @@ public class ReceitaView {
     private Receita receita;
 
     public ReceitaView(Receita receita) {
+
         this.receita = receita;
     }
 
@@ -25,7 +26,11 @@ public class ReceitaView {
     public void headerView(PrintStream out) {
         out.printf("%n%s%n%n", receita.getNome());
         out.printf("Categoria: %s%n", receita.getCategoria().name());
-        out.printf("Tempo de preparo: %s minutos %n", receita.getTempoPreparo());
+        double tempoPreparo = receita.getTempoPreparo();
+        if (tempoPreparo > 0.0) {
+            out.printf("Tempo de preparo: %s minutos %n", receita.getTempoPreparo());
+        }
+ //       out.printf("Tempo de preparo: %s minutos %n", receita.getTempoPreparo());
         if (receita.getRendimento() != null) {
             if (receita.getRendimento().getMinimo() != receita.getRendimento().getMaximo()) {
                 out.printf("Rendimento: de %s à %s %s%n", receita.getRendimento().getMinimo(), receita.getRendimento().getMaximo(), receita.getRendimento().getTipo().name());
@@ -40,8 +45,8 @@ public class ReceitaView {
         if (receita.getIngredientes() == null || receita.getIngredientes().isEmpty()) {
             out.printf("%s%n", "Nenhum ingrediente encontrado!");
         } else {
-            for (Ingrediente ingrediente : receita.getIngredientes()) {
-                out.printf("%s %s de %s%n", ingrediente.getQuantidade(), ingrediente.getTipo().name(), ingrediente.getNome());
+             for (int i = 0; i < receita.getIngredientes().size(); i++) {
+                out.printf("%d - %s %s de %s%n",  i+1, receita.getIngredientes().get(i).getQuantidade(),  receita.getIngredientes().get(i).getTipo(), receita.getIngredientes().get(i).getNome());
             }
         }
     }
@@ -51,16 +56,16 @@ public class ReceitaView {
         if (receita.getPreparo() == null || receita.getPreparo().isEmpty()) {
             out.printf("%s%n", "Nenhum preparo encontrado!");
         } else {
-//            for (int i = 0; i < receita.getPreparo().size(); i++) {
-//                out.println(receita.getPreparo().get(i));
-//            }
+            for (int i = 0; i < receita.getPreparo().size(); i++) {
+                out.println(i+1 + " - "+ receita.getPreparo().get(i));
+            }
 //            for (String s : receita.getPreparo()) {
 //                out.println(s);
 //            }
 //            receita.getPreparo().forEach(s -> {
 //                out.println(s);
 //            });
-            receita.getPreparo().forEach(out::println);
+//            receita.getPreparo().forEach(out::println);
         }
     }
 }

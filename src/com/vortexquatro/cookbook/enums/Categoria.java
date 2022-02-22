@@ -1,4 +1,4 @@
-package br.com.letscode.cookbook.enums;
+package com.vortexquatro.cookbook.enums;
 
 public enum Categoria {
     DOCE,

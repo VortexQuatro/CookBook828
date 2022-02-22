@@ -1,8 +1,8 @@
-package br.com.letscode.cookbook.view;
+package com.vortexquatro.cookbook.view;
 
-import br.com.letscode.cookbook.controller.Catalogo;
-import br.com.letscode.cookbook.domain.Receita;
-import br.com.letscode.cookbook.enums.Categoria;
+import com.vortexquatro.cookbook.controller.Catalogo;
+import com.vortexquatro.cookbook.domain.Receita;
+import com.vortexquatro.cookbook.enums.Categoria;
 
 import java.util.Locale;
 
@@ -54,6 +54,9 @@ public class CatalogoView {
         switch (opcao) {
             case "+":
                 add();
+                break;
+            case "E":
+                edit();
                 break;
             case "-":
                 del();
@@ -158,21 +161,9 @@ public class CatalogoView {
             } else {
                 //Se NÃO encontrar continua.
                 //Capturar dados da nova receita.
-                StringBuilder sb = new StringBuilder("Qual a categoria da nova receita?\n");
-                String[] options = new String[Categoria.values().length];
-                for (int i = 0; i < options.length; i++) {
-                    options[i] = String.valueOf(i);
-                    sb.append(String.format("%d - %s%n", i, Categoria.values()[i]));
-                }
-                String opcao = ConsoleUtils.getUserOption(sb.toString(), options);
-                Categoria categoria = null;
-                for (int i = 0; i < options.length; i++) {
-                    if (opcao.equalsIgnoreCase(options[i])) {
-                        categoria = Categoria.values()[i];
-                        break;
-                    }
-                }
-                //Cria uma nova receita.
+                Categoria categoria = AddCategoria();
+
+                //Cria uma nova receita e edita demais componentes.
                 Receita nova = new EditReceitaView(new Receita(name, categoria)).edit();
                 if (nova != null) {
                     //Passa a receita para o Catalogo adicionar.
@@ -183,6 +174,24 @@ public class CatalogoView {
                 }
             }
         }
+    }
+
+    private Categoria AddCategoria() {
+        StringBuilder sbCategoria = new StringBuilder("Qual a categoria da nova receita?\n");
+        String[] optionsCategoria = new String[Categoria.values().length];
+        for (int i = 0; i < optionsCategoria.length; i++) {
+            optionsCategoria[i] = String.valueOf(i);
+            sbCategoria.append(String.format("%d - %s%n", i, Categoria.values()[i]));
+        }
+        String opcaoCategoria = ConsoleUtils.getUserOption(sbCategoria.toString(), optionsCategoria);
+        Categoria categoria = null;
+        for (int i = 0; i < optionsCategoria.length; i++) {
+            if (opcaoCategoria.equalsIgnoreCase(optionsCategoria[i])) {
+                categoria = Categoria.values()[i];
+                return categoria;
+            }
+        }
+        return null;
     }
 
     public void view() {

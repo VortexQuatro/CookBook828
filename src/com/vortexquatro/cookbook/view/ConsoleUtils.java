@@ -1,4 +1,4 @@
-package br.com.letscode.cookbook.view;
+package com.vortexquatro.cookbook.view;
 
 import java.util.Scanner;
 
@@ -11,6 +11,7 @@ public class ConsoleUtils {
     }
 
     public static String getUserInput(String question) {
+
         return getUserOption(question);
     }
 

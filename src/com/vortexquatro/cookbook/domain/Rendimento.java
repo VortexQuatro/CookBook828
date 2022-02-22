@@ -1,6 +1,6 @@
-package br.com.letscode.cookbook.domain;
+package com.vortexquatro.cookbook.domain;
 
-import br.com.letscode.cookbook.enums.TipoRendimento;
+import com.vortexquatro.cookbook.enums.TipoRendimento;
 
 public class Rendimento {
     private int minimo;
@@ -19,14 +19,17 @@ public class Rendimento {
     }
 
     public int getMinimo() {
+
         return minimo;
     }
 
     public int getMaximo() {
+
         return maximo;
     }
 
     public TipoRendimento getTipo() {
+
         return tipo;
     }
 
